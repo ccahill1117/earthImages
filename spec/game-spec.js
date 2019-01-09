@@ -2,8 +2,8 @@ import { Game } from './../src/game.js';
 import { Biker } from './../src/biker.js';
 import { World } from './../src/world.js';
 const newGame = new Game("test");
-const newBiker = new Biker("test", 1);
-const newWorld = new World("place")
+const newBiker = new Biker("test", 1, 1);
+const newWorld = new World("place");
 
 describe ('Game', function() {
   it('should contain and display given game name', function() {
@@ -22,6 +22,9 @@ describe ('Biker', function() {
   it('should contain and display given player type', function(){
     expect(newBiker.type).toEqual(1);
   });
+  it('should contain and display a bike type', function() {
+    expect(newBiker.bike).toEqual(1);
+  })
 });
 
 describe ('World', function() {
