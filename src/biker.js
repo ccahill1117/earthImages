@@ -3,4 +3,5 @@ export function Biker(name, type, bike) {
   this.type = type;
   this.bike = bike;
   this.energy = 100;
+  this.inventory = [];
 }
