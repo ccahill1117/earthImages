@@ -1,9 +1,9 @@
 import { Game } from './../src/game.js';
 import { Biker } from './../src/biker.js';
-import { World } from './../src/biker.js';
+import { World } from './../src/world.js';
 const newGame = new Game("test");
 const newBiker = new Biker("test", 1);
-const newWorld = new World("test")
+const newWorld = new World("place")
 
 describe ('Game', function() {
   it('should contain and display given game name', function() {
@@ -26,6 +26,9 @@ describe ('Biker', function() {
 
 describe ('World', function() {
   it('should create a bikeable world', function(){
-    expect(newWorld.size).toEqual([1,2,3,4,5]);
+    expect(newWorld.grid).toEqual([1,2,3,4,5]);
+  });
+  it('should create a bikeable world with a name', function(){
+    expect(newWorld.name).toEqual("place");
   });
 });
