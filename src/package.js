@@ -1,2 +1,3 @@
-export function Package() {
+export function Package(weight) {
+  this.weight = weight;
 }
