@@ -1,9 +1,11 @@
 import { Game } from './../src/game.js';
 import { Biker } from './../src/biker.js';
 import { World } from './../src/world.js';
+import { Package } from './../src/package.js';
 const newGame = new Game("test");
 const newBiker = new Biker("test", 1, 1);
 const newWorld = new World("place");
+const newPackage = new Package(1);
 
 describe ('Game', function() {
   it('should contain and display given game name', function() {
@@ -35,3 +37,9 @@ describe ('World', function() {
     expect(newWorld.name).toEqual("place");
   });
 });
+
+describe ('Package', function() {
+  it('should contain package weight', function() {
+    expect(newPackage.weight).toEqual(1);
+  })
+})
