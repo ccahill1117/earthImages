@@ -2,12 +2,16 @@ import { Game } from './../src/game.js';
 import { Biker } from './../src/biker.js';
 import { World } from './../src/world.js';
 import { Package } from './../src/package.js';
-const newGame = new Game("test");
-const newBiker = new Biker("test", 1, 1);
-const newWorld = new World("place");
-const newPackage = new Package(1);
+
+let newGame;
+let newBiker;
+let newWorld;
+let newPackage;
 
 describe ('Game', function() {
+  beforeEach(function() {
+    newGame = new Game("test");
+  });
   it('should contain and display given game name', function() {
     // let string = new Game ("test");
     expect(newGame.name).toEqual("test");
@@ -18,6 +22,9 @@ describe ('Game', function() {
 });
 
 describe ('Biker', function() {
+  beforeEach(function() {
+    newBiker = new Biker("test", 1, 1);
+  });
   it('should contain and display given player name', function(){
     expect(newBiker.name).toEqual("test");
   });
@@ -36,6 +43,9 @@ describe ('Biker', function() {
 });
 
 describe ('World', function() {
+  beforeEach(function() {
+    newWorld = new World("place");
+  });
   it('should create a bikeable world', function(){
     expect(newWorld.grid).toEqual([1,2,3,4,5]);
   });
@@ -45,6 +55,9 @@ describe ('World', function() {
 });
 
 describe ('Package', function() {
+  beforeEach(function() {
+    newPackage = new Package(1);
+  });
   it('should contain package weight', function() {
     expect(newPackage.weight).toEqual(1);
   })
