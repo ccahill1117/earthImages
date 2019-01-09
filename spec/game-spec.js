@@ -26,7 +26,10 @@ describe ('Biker', function() {
   });
   it('should contain and display a bike type', function() {
     expect(newBiker.bike).toEqual(1);
-  })
+  });
+  it('should contain and display an energy value', function(){
+    expect(newBiker.energy).toEqual(100);
+  });
 });
 
 describe ('World', function() {
