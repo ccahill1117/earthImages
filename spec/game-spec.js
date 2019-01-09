@@ -30,6 +30,9 @@ describe ('Biker', function() {
   it('should contain and display an energy value', function(){
     expect(newBiker.energy).toEqual(100);
   });
+  it('should contain and display an inventory', function() {
+    expect(newBiker.inventory).toEqual([])
+  })
 });
 
 describe ('World', function() {
