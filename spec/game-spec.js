@@ -42,4 +42,7 @@ describe ('Package', function() {
   it('should contain package weight', function() {
     expect(newPackage.weight).toEqual(1);
   })
+  it('should contain contain a value for deliverd or undelivered', function() {
+    expect(newPackage.delivered).toEqual(false);
+  })
 })
