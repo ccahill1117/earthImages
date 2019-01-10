@@ -92,26 +92,39 @@ export class Game {
       }
     }
     else if (direction == "down") {
-      if (this.checkTile(availableMoves[1]) == "no") {
+      if (this.checkTile(this.findLocation(availableMoves[1])) == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[1]
       }
     }
     else if (direction == "left") {
-      if (this.checkTile(availableMoves[2]) == "no") {
+      if (this.checkTile(this.findLocation(availableMoves[2])) == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[2]
       }
     }
     else if (direction == "right") {
-      if (this.checkTile(availableMoves[3]) == "no") {
+      if (this.checkTile(this.findLocation(availableMoves[3])) == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[3]
       }
     }
     return nextLocation;
+  }
+
+
+  updatePlayer(userInput) {
+    let currentLocation = this.findPlayer(this.playerLocation);
+    let x = currentLocation[0];
+    let y = currentLocation[1];
+
+    let nextMove = this.movePlayer(userInput);
+    let playerY = nextMove[0];
+    let playerX = nextMove[1];
+    this.playerLocation[y][x] = 0;
+    this.playerLocation[nextMove[1]][nextMove[0]] = "player";
   }
 }
