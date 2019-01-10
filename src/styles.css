@@ -1,0 +1,17 @@
+#grid {
+  font-size: 30px;
+  /* margin-top: 10px; */
+}
+
+#player-location {
+  font-size: 30px;
+  margin-top: -495px;
+}
+
+.edge {
+  opacity: 0.2;
+}
+
+.clear {
+  opacity: 0.2;
+}

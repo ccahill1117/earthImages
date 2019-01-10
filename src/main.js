@@ -1,43 +1,35 @@
 import './styles.css';
+import { Game } from './game.js'
 // import { Game } from './game.js';
 import $ from 'jquery';
 
-const map = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-];
+
+
+
+
 
 
 $(document).ready(function(){
-
+  let newGame = new Game("test");
   $(document).keydown(function(e) {
     switch (e.keyCode) {
-        case 37:
-            $(".resultDiv").append('left');
-            break;
-        case 38:
-            $(".resultDiv").append('up');
-            break;
-        case 39:
-            $(".resultDiv").append('right');
-            break;
-        case 40:
-            $(".resultDiv").append('down');
-            break;
+      case 37:
+        $(".resultDiv").append('left');
+        break;
+      case 38:
+        $(".resultDiv").append('up');
+        break;
+      case 39:
+        $(".resultDiv").append('right');
+        break;
+      case 40:
+        $(".resultDiv").append('down');
+        break;
     }
   });
 
 
-  map.forEach(function(line) {
+  newGame.map.forEach(function(line) {
     line.forEach(function(element) {
       if (element == 1) {
         $("#grid").append("🌱")
@@ -45,7 +37,22 @@ $(document).ready(function(){
         $("#grid").append("💩")
       }
     });
-    $("#grid").append("🌱").append("<br>");
-  })
+    $("#grid").append("<br>");
+  });
+
+
+  newGame.playerLocation.forEach(function(line) {
+    line.forEach(function(element) {
+      if (element == "player") {
+        $("#player-location").append("🚴‍♀️")
+      } else if (element == 0) {
+        $("#player-location").append("<span class='clear'>💩</span>")
+      }
+      else if (element == 1) {
+        $("#player-location").append("<span class='edge'>🌱</span>")
+      }
+    });
+    $("#player-location").append("<br>");
+  });
 
 })
