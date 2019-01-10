@@ -1,11 +1,14 @@
 #grid {
   font-size: 30px;
-  /* margin-top: 10px; */
+
+  line-height: 100%;
 }
 
 #player-location {
   font-size: 30px;
-  margin-top: -495px;
+  margin-top: -330px;
+  line-height: 100%;
+
 }
 
 .edge {
@@ -13,5 +16,5 @@
 }
 
 .clear {
-  opacity: 0.2;
+  opacity: 0;
 }
