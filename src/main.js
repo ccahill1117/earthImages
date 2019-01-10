@@ -15,6 +15,7 @@ $(document).ready(function(){
     switch (e.keyCode) {
       case 37:
         $(".resultDiv").append('left');
+        console.log(newGame.findPlayer(newGame.playerLocation));
         break;
       case 38:
         $(".resultDiv").append('up');

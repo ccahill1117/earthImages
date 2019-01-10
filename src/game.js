@@ -35,11 +35,19 @@ export class Game {
 
 
   findPlayer(array) {
+    let rowResult;
+    let colResult;
+    let coordResult = [];
     array.forEach(function(line) {
       if ((line.includes("player")) == true ) {
         console.log("position" + line.indexOf("player"));
         console.log("line" + array.indexOf(line));
+        rowResult = (line.indexOf("player"));
+        colResult = (array.indexOf(line));
+        coordResult.push(rowResult);
+        coordResult.push(colResult);
       }
     })
+    return coordResult;
   }
 }
