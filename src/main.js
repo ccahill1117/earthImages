@@ -5,10 +5,6 @@ import $ from 'jquery';
 
 
 
-
-
-
-
 $(document).ready(function(){
   let newGame = new Game("test");
   $(document).keydown(function(e) {
