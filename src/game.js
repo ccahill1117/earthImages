@@ -59,37 +59,59 @@ export class Game {
 
   moveChecker(playerCoords) {
     let moves = [];
-    let currentLocation = this.findPlayer(this.playerLocation);
-    let upMove = currentLocation[1] - 1;
-    let upTile = [currentLocation[0],upMove];
-    let downMove = currentLocation[1] + 1;
-    let downTile = [currentLocation[0],downMove];
-    let leftMove = currentLocation[0] - 1;
-    let leftTile = [leftMove,currentLocation[1]];
-    let rightMove = currentLocation[0] + 1;
-    let rightTile = [rightMove,currentLocation[1]];
+    let upMove = playerCoords[1] - 1;
+    let upTile = [playerCoords[0],upMove];
+    let downMove = playerCoords[1] + 1;
+    let downTile = [playerCoords[0],downMove];
+    let leftMove = playerCoords[0] - 1;
+    let leftTile = [leftMove,playerCoords[1]];
+    let rightMove = playerCoords[0] + 1;
+    let rightTile = [rightMove,playerCoords[1]];
     moves.push(upTile,downTile,leftTile,rightTile);
     return moves;
   }
 
+  checkTile(tile) {
+    if (tile == 1) {
+     return  "no"
+    }
+    else if (tile != 1) {
+      return "ok"
+    }
+  }
+
   movePlayer(direction) {
-    let currentLocation = this.findPlayer(this.playerLocation);
+    let currentCoordinates = this.findPlayer(this.playerLocation);
+    let availableMoves = this.moveChecker(currentCoordinates);
+    let nextLocation;
     if (direction == "up") {
-      if (this.findLocation(currentLocation)) {
-
+      if (this.checkTile(this.findLocation(availableMoves[0])) == "no") {
+        nextLocation = currentCoordinates;
+      } else {
+        nextLocation = availableMoves[0]
       }
-
     }
     else if (direction == "down") {
-      currentLocation[1] = currentLocation[1] + 1;
+      if (this.checkTile(availableMoves[1]) == "no") {
+        nextLocation = currentCoordinates;
+      } else {
+        nextLocation = availableMoves[1]
+      }
     }
     else if (direction == "left") {
-      currentLocation[0] = currentLocation[0] - 1;
+      if (this.checkTile(availableMoves[2]) == "no") {
+        nextLocation = currentCoordinates;
+      } else {
+        nextLocation = availableMoves[2]
+      }
     }
     else if (direction == "right") {
-      currentLocation[0] = currentLocation[0] + 1;
-
+      if (this.checkTile(availableMoves[3]) == "no") {
+        nextLocation = currentCoordinates;
+      } else {
+        nextLocation = availableMoves[3]
+      }
     }
-
+    return nextLocation;
   }
 }
