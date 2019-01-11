@@ -4,14 +4,14 @@ export class Game {
     this.score = 0;
     this.map = [
       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-      [1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1],
-      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,1],
-      [1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,5,0,0,0,1],
-      [1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,5,5,0,0,0,1],
-      [1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,5,0,0,0,0,1],
-      [1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,5,5,0,0,0,0,1],
-      [1,0,0,0,1,1,0,0,6,0,0,0,0,0,0,0,0,5,0,0,0,0,0,1],
-      [1,0,1,1,1,1,1,0,0,5,5,5,5,0,0,0,5,5,0,0,1,1,1,1],
+      [1,0,5,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,1],
+      [1,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,1],
+      [1,0,0,5,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,5,0,0,0,1],
+      [1,0,0,5,0,0,0,0,1,1,1,1,1,0,0,0,0,0,5,5,0,0,0,1],
+      [1,0,0,5,5,5,5,5,0,0,1,1,1,1,1,1,0,0,5,0,0,0,0,1],
+      [1,0,0,0,0,0,0,5,0,0,0,0,1,1,0,0,0,5,5,0,0,0,0,1],
+      [1,0,0,0,1,1,0,5,6,0,0,0,0,0,0,0,0,5,0,0,0,0,0,1],
+      [1,0,1,1,1,1,1,5,5,5,5,5,5,0,0,0,5,5,0,0,1,1,1,1],
       [1,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,1,1,1,1,1,1,1],
       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     ];
@@ -70,10 +70,11 @@ export class Game {
   }
 
   checkTile(tile) {
-    if (tile == 1) {
+    if ((tile == 1) || (tile == 4)) {
      return  "no"
-    }
-    else if (tile != 1) {
+    } else if (tile == 0) {
+      return "ok"
+    } else if (tile == 6) {
       return "ok"
     }
   }
@@ -82,29 +83,35 @@ export class Game {
     let currentCoordinates = this.findPlayer(this.playerLocation);
     let availableMoves = this.moveChecker(currentCoordinates);
     let nextLocation;
+
+    let up = this.checkTile(this.findLocation(availableMoves[0]));
+    let down = this.checkTile(this.findLocation(availableMoves[1]));
+    let left = this.checkTile(this.findLocation(availableMoves[2]));
+    let right = this.checkTile(this.findLocation(availableMoves[3]));
+
     if (direction == "up") {
-      if (this.checkTile(this.findLocation(availableMoves[0])) == "no") {
+      if (up == "no") {
         nextLocation = currentCoordinates;
-      } else {
+      } else if (up == "ok") {
         nextLocation = availableMoves[0]
       }
     }
     else if (direction == "down") {
-      if (this.checkTile(this.findLocation(availableMoves[1])) == "no") {
+      if (down == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[1]
       }
     }
     else if (direction == "left") {
-      if (this.checkTile(this.findLocation(availableMoves[2])) == "no") {
+      if (left == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[2]
       }
     }
     else if (direction == "right") {
-      if (this.checkTile(this.findLocation(availableMoves[3])) == "no") {
+      if (right == "no") {
         nextLocation = currentCoordinates;
       } else {
         nextLocation = availableMoves[3]
@@ -122,6 +129,7 @@ export class Game {
     let nextMove = this.movePlayer(userInput);
     let playerY = nextMove[0];
     let playerX = nextMove[1];
+
     this.playerLocation[y][x] = 0;
     this.playerLocation[nextMove[1]][nextMove[0]] = "player";
   }

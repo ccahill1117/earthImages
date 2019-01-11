@@ -31,6 +31,11 @@ $(document).ready(function(){
   var everyKey = function() {
     newBiker.loseEnergy();
     $("#energyAmount").text(newBiker.energy);
+    if (newBiker.energy == 0) {
+      $("#player-location").empty();
+      $("#grid").empty();
+      $("#game-over").show();
+    }
   }
 
   updateGame();
@@ -77,7 +82,7 @@ $(document).ready(function(){
       } else if (element == 5) {
         $("#grid").append("⬜")
       } else if (element == 6) {
-        $("#grid").append("💩")
+        $("#grid").append("🥙")
       }
     });
     $("#grid").append("<br>");
