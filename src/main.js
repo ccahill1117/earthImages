@@ -46,7 +46,6 @@ $(document).ready(function(){
       let body = JSON.parse(response);
       earth.initialLatLong(lat,long);
       console.log(body);
-      $(".imageDiv").prepend(`<img src='${body.url}'>`);
       const id = (x+((y)*11))
       $(`span#${id}`).html(`<img src='${body.url}'>`)
       $("#errorDiv").text("");
