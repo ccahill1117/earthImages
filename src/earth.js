@@ -2,6 +2,21 @@ export class Earth {
   constructor() {
     this.lat = 0;
     this.long = 0;
+    this.x = 5;
+    this.y = 5;
+    this.map = [
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,"mid",0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0]
+    ];
   }
 
   initialLatLong(lat,long) {
@@ -11,16 +26,20 @@ export class Earth {
 
   updateLatLong(direction) {
     if (direction == "up") {
-      this.lat = parseFloat((this.lat + 0.0250).toFixed(4));
+      this.lat = parseFloat((this.lat + 0.02500).toFixed(4));
+      this.y = this.y - 1;
     }
     if (direction == "down") {
-      this.lat = parseFloat((this.lat - 0.0250).toFixed(4));
+      this.lat = parseFloat((this.lat - 0.02500).toFixed(4));
+      this.y = this.y + 1;
     }
     if (direction == "left") {
-      this.long = parseFloat((this.long - 0.0250).toFixed(4));
+      this.long = parseFloat((this.long - 0.02500).toFixed(4));
+      this.x = this.x - 1;
     }
     if (direction == "right") {
-      this.long = parseFloat((this.long + 0.0250).toFixed(4));
+      this.long = parseFloat((this.long + 0.02500).toFixed(4));
+      this.x = this.x + 1;
     }
 
   }
