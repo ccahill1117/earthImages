@@ -34,11 +34,10 @@ $(document).ready(function(){
 
     let userLat = parseFloat($("#userLat").val());
     let userLong = parseFloat($("#userLong").val());
-
-    APICall(userLat, userLong);
+    APICall(userLat, userLong, 5, 5);
   });
 
-  function APICall(lat, long) {
+  function APICall(lat, long, x, y) {
     $("#latSpan").text(lat);
     $("#longSpan").text(long);
     let promise = earth.getMap(lat, long);
@@ -48,12 +47,15 @@ $(document).ready(function(){
       earth.initialLatLong(lat,long);
       console.log(body);
       $(".imageDiv").prepend(`<img src='${body.url}'>`);
+      const id = (x+((y)*11))
+      $(`span#${id}`).html(`<img src='${body.url}'>`)
       $("#errorDiv").text("");
     },
 
     function(error) {
       $('#errorDiv').text(`There was an error processing your request`);
     });
+
   }
 
 
@@ -63,22 +65,22 @@ $(document).ready(function(){
       case 37:
         earth.updateLatLong("left");
         console.log(`left, ${earth.lat}, ${earth.long}, ${earth.x}, ${earth.y}`)
-        APICall(earth.lat, earth.long);
+        APICall(earth.lat, earth.long, earth.x, earth.y);
         break;
       case 38:
         earth.updateLatLong("up");
         console.log(`up, ${earth.lat}, ${earth.long}, ${earth.x}, ${earth.y}`)
-        APICall(earth.lat, earth.long);
+        APICall(earth.lat, earth.long, earth.x, earth.y);
         break;
       case 39:
         earth.updateLatLong("right");
         console.log(`right, ${earth.lat}, ${earth.long}, ${earth.x}, ${earth.y}`)
-        APICall(earth.lat, earth.long);
+        APICall(earth.lat, earth.long, earth.x, earth.y);
         break;
       case 40:
         earth.updateLatLong("down");
         console.log(`down, ${earth.lat}, ${earth.long}, ${earth.x}, ${earth.y}`)
-        APICall(earth.lat, earth.long);
+        APICall(earth.lat, earth.long, earth.x, earth.y);
         break;
       }
   });
