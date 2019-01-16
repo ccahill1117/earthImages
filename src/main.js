@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 
-
 $(document).ready(function(){
+  const earth = new Earth();
   $("#userCoords").submit(function(event) {
     event.preventDefault();
 
@@ -16,23 +16,11 @@ $(document).ready(function(){
     $("#latSpan").text(userLat);
     $("#longSpan").text(userLong);
 
-
-    let promise = new Promise(function(resolve, reject) {
-    let request = new XMLHttpRequest();
-    let url = `https://api.nasa.gov/planetary/earth/imagery/?lon=${userLong}&lat=${userLat}&cloud_score=False&api_key=${process.env.ctc_nasa_key}`;
-      request.onload = function() {
-        if (this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(Error(request.statusText));
-        }
-      }
-      request.open("GET", url, true);
-      request.send();
-    });
+    let promise = earth.getMap(userLat, userLong);
 
     promise.then(function(response) {
       let body = JSON.parse(response);
+      earth.initialLatLong(userLat,userLong);
       console.log(body);
       $(".imageDiv").prepend(`<img src='${body.url}'>`);
     },
@@ -42,6 +30,36 @@ $(document).ready(function(){
     });
 
 
+
   })
+
+  $(document).keydown(function(e) {
+    switch (e.keyCode) {
+      case 37:
+        earth.updateLatLong("left");
+        console.log("left")
+        console.log(earth.lat)
+        console.log(earth.long)
+        break;
+      case 38:
+        earth.updateLatLong("up");
+        console.log("up")
+        console.log(earth.lat)
+        console.log(earth.long)
+        break;
+      case 39:
+        earth.updateLatLong("right");
+        console.log("right")
+        console.log(earth.lat)
+        console.log(earth.long)
+        break;
+      case 40:
+        earth.updateLatLong("down");
+        console.log("down")
+        console.log(earth.lat)
+        console.log(earth.long)
+        break;
+      }
+  });
 
 })
