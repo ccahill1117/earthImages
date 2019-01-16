@@ -34,7 +34,7 @@ $(document).ready(function(){
     promise.then(function(response) {
       let body = JSON.parse(response);
       console.log(body);
-      $(".imageDiv").prepend(`<img src=${body.url}>`);
+      $(".imageDiv").prepend(`<img src='${body.url}'>`);
     },
 
     function(error) {
