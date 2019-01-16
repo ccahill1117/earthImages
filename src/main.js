@@ -16,6 +16,32 @@ $(document).ready(function(){
     $("#latSpan").text(userLat);
     $("#longSpan").text(userLong);
 
+
+    let promise = new Promise(function(resolve, reject) {
+    let request = new XMLHttpRequest();
+    let url = `https://api.nasa.gov/planetary/earth/imagery/?lon=${userLong}&lat=${userLat}&cloud_score=False&api_key=${process.env.ctc_nasa_key}`;
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      }
+      request.open("GET", url, true);
+      request.send();
+    });
+
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+      $(".imageDiv").prepend(`<img src=${body.url}>`);
+    },
+
+    function(error) {
+      $('#errorDiv').text(`There was an error processing your request`);
+    });
+
+
   })
 
 })
