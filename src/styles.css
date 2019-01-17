@@ -29,14 +29,22 @@ table#grid {
   height: 1152px;
   margin: 40px;
   float: left;
+  display: none;
 }
 
+h2#warning {
+  display: none;
+}
+
+h3#warning {
+  display: none;
+}
 #map {
   width: 1152px;
   height: 1152px;
   margin: 40px;
   float: right;
-  display: inline;
+  display: none;
 
 }
 html, body {

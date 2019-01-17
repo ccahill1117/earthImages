@@ -16,7 +16,7 @@ export class Map {
         lat: userLat,
         lng: userLong
       },
-      zoom: 12
+      zoom: 13
     });
   }
 }

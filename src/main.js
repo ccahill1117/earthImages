@@ -8,7 +8,12 @@ const loadGoogleMapsApi = require('load-google-maps-api')
 
 $(document).ready(function() {
 
-
+  var timeleft = 3;
+  var downloadTimer = setInterval(function(){
+    document.getElementById("progressBar").value = 10 - --timeleft;
+    if(timeleft <= 0)
+      clearInterval(downloadTimer);
+  },100);
 
   const earth = new Earth();
 
@@ -37,6 +42,12 @@ $(document).ready(function() {
     loadPromise.then(function(googleMaps) {
       let map = Map.createMap(googleMaps, mapElement, userLat, userLong);
     });
+
+    $("table#grid").show();
+    $("#map").show();
+    $("h2#warning").show();
+    $("h3#warning").show();
+    $("#userCoords").hide();
 
   });
 
