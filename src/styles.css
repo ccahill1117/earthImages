@@ -16,9 +16,31 @@ img {
 }
 
 div#table {
-  border-style: solid;
-  width: 2304px;
-  height: 1920px;
-  padding: 40px;
   margin: 40px;
+}
+
+div#grid {
+  z-index: 3;
+}
+
+table#grid {
+  border-style: solid;
+  width: 1152px;
+  height: 1152px;
+  margin: 40px;
+  float: left;
+}
+
+#map {
+  width: 1152px;
+  height: 1152px;
+  margin: 40px;
+  float: right;
+  display: inline;
+
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
