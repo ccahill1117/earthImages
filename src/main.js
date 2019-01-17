@@ -14,18 +14,18 @@ $(document).ready(function(){
   }
 
   const earth = new Earth();
+
   let gridCounter = 0;
+
   earth.map.forEach(function(line) {
-   line.forEach(function(element) {
-     gridCounter = gridCounter + 1;
-     if (element == 0) {
-       $("#grid").append(`<span class="gridTest" id=${gridCounter}>lil box</span>`)
-     }
-     if (element == "mid") {
-       $("#grid").append("MIDDLE")
-     }
-   });
-   $("#grid").append("<br>");
+    $("#grid").append("<tr>");
+      line.forEach(function(element) {
+        gridCounter = gridCounter + 1;
+        if (element == 0) {
+          $("#grid").append(`<td class="gridCells" id=${gridCounter}></td>`)
+        }
+        $("#grid").append("</tr>");
+      });
  });
 
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
       earth.initialLatLong(lat,long);
       console.log(body);
       const id = (x+((y)*18))
-      $(`span#${id}`).html(`<img src='${body.url}'>`)
+      $(`td#${id}`).html(`<img src='${body.url}'>`)
       $("#errorDiv").text("");
     },
 
