@@ -34,7 +34,7 @@ $(document).ready(function(){
 
     let userLat = parseFloat($("#userLat").val());
     let userLong = parseFloat($("#userLong").val());
-    APICall(userLat, userLong, 5, 5);
+    APICall(userLat, userLong, 5, 7);
   });
 
   function APICall(lat, long, x, y) {
@@ -46,7 +46,7 @@ $(document).ready(function(){
       let body = JSON.parse(response);
       earth.initialLatLong(lat,long);
       console.log(body);
-      const id = (x+((y)*11))
+      const id = (x+((y)*18))
       $(`span#${id}`).html(`<img src='${body.url}'>`)
       $("#errorDiv").text("");
     },
