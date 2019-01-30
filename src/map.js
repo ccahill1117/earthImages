@@ -1,5 +1,7 @@
 const loadGoogleMapsApi = require('load-google-maps-api');
-const googleKey = `${process.env.ctc_google_maps}`;
+import { Key } from './key.js'
+
+const key = new Key();
 
 export class Map {
   constructor() {
@@ -7,8 +9,9 @@ export class Map {
     console.log(this.markers);
   }
   static loadMap() {
-    return loadGoogleMapsApi({ key: `${googleKey}` });
+    return loadGoogleMapsApi({ key: `${key.googlemaps}` });
   }
+
 
   static createMap(googleMaps, mapElement, userLat, userLong) {
     return new googleMaps.Map(mapElement, {

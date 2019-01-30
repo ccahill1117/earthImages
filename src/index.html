@@ -2,36 +2,41 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
   <meta name="viewport" content="initial-scale=2.0">
   <meta charset="utf-8">
+  <script src="./keys" charset="utf-8"></script>
   <title>Earth Images</title>
 </head>
 <body>
-  <h1>Earth Images API via NASA</h1>
+  <div>
+    <h1>Earth Images API via NASA</h1>
 
-  <form class="form-group" method="post" id="userCoords">
-    <label for="userLat">Latitude float</label>
-    <input type="text" id="userLat">
-    <label for="userLong">Longitude float</label>
-    <input type="text" id="userLong">
-    <button type="submit" name="button">Click to submit Lat/Long</button>
-  </form>
+    <form class="form-group" method="post" id="userCoords">
+      <label for="userLat">Latitude float</label>
+      <input type="text" id="userLat">
+      <label for="userLong">Longitude float</label>
+      <input type="text" id="userLong">
+      <button type="submit" name="button">Click to submit Lat/Long</button>
+    </form>
 
-  <h2 id="warning">After submitting coordinates, use arrow keys to reveal area around provided Lat/Long via NASA Landsat 8 imagery</h2>
-  <h3 id="warning">Wait two seconds before each arrow key press!!!</h3>
+    <h2 id="warning">After submitting coordinates, use arrow keys to reveal area around provided Lat/Long via NASA Landsat 8 imagery</h2>
+    <h3 id="warning">Wait two seconds before each arrow key press!!!</h3>
 
-  <div class="testDiv">
-    <h3>lat : <span id="latSpan"></span> </h3>
-    <h3>long : <span id="longSpan"></span> </h3>
+    <div class="testDiv">
+      <h3>lat : <span id="latSpan"></span> </h3>
+      <h3>long : <span id="longSpan"></span> </h3>
+    </div>
   </div>
 
-  <div class="">
-    <table id="grid">
-    </table>
 
+  <div class="grid-container">
+    <div id="gridTable">
+      <table id="grid">
+      </table>
+    </div>
     <div id="map">
     </div>
+
   </div>
 
 

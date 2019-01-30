@@ -4,8 +4,6 @@ td {
   height: 128px;
   width: 128px;
 
-
-
 }
 
 img {
@@ -15,21 +13,25 @@ img {
   margin: -2px;
 }
 
-div#table {
-  margin: 40px;
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 0px;
+
+  padding: 10px;
 }
 
-div#grid {
-  z-index: 3;
+#gridTable {
+  border-style: solid;
 }
 
 table#grid {
-  border-style: solid;
   width: 1152px;
   height: 1152px;
-  margin: 40px;
-  float: left;
-  display: none;
+  margin: 0px;
+
 }
 
 h2#warning {
@@ -39,15 +41,16 @@ h2#warning {
 h3#warning {
   display: none;
 }
+
 #map {
-  width: 1152px;
-  height: 1152px;
-  margin: 40px;
-  float: right;
-  display: none;
+  width: 1176px;
+  height: 1176px;
+  margin: 0px;
+  border-style: solid;
 
 }
 html, body {
+  /* zoom: 70%; */
   height: 100%;
   margin: 0;
   padding: 0;

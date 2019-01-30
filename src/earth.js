@@ -1,3 +1,7 @@
+import { Key } from './key'
+
+let key = new Key();
+
 export class Earth {
   constructor() {
     this.lat = 0;
@@ -46,7 +50,7 @@ export class Earth {
   getMap(lat, long) {
     return new Promise(function(resolve, reject) {
     let request = new XMLHttpRequest();
-    let url = `https://api.nasa.gov/planetary/earth/imagery/?lon=${long}&lat=${lat}&cloud_score=False&api_key=${process.env.ctc_nasa_key}`;
+    let url = `https://api.nasa.gov/planetary/earth/imagery/?lon=${long}&lat=${lat}&cloud_score=False&api_key=${key.nasa}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);

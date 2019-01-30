@@ -1,19 +1,13 @@
-import { Map} from './map';
+import { Map } from './map';
 import { Earth } from './earth.js';
+import { Keys } from './key'
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-const loadGoogleMapsApi = require('load-google-maps-api')
+const loadGoogleMapsApi = require('load-google-maps-api');
 
 $(document).ready(function() {
-
-  var timeleft = 3;
-  var downloadTimer = setInterval(function(){
-    document.getElementById("progressBar").value = 10 - --timeleft;
-    if(timeleft <= 0)
-      clearInterval(downloadTimer);
-  },100);
 
   const earth = new Earth();
 
@@ -29,7 +23,6 @@ $(document).ready(function() {
         $("#grid").append("</tr>");
       });
  });
-
 
   $("#userCoords").submit(function(event) {
     event.preventDefault();
@@ -71,8 +64,6 @@ $(document).ready(function() {
     });
 
   }
-
-
 
   $(document).keydown(function(e) {
     switch (e.keyCode) {
